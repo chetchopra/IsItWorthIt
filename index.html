@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<link type="text/css" rel="stylesheet" href="styles/styles.css">
+	<title>Is it Worth it?</title>
+</head>
+<body>
+	<!-- Brand Navbar -->
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1 class="display-4">Is it Worth it?</h1>
+			<p class="lead"></p>
+		</div>
+
+	</div>
+	<!-- Sliding Wishlist -->
+	<div>
+		<div class="wishlist">
+			<div class="container">
+				<p class="exit">&times;</p>
+				<p>Your Wish List</p>
+				<ul>
+					<li>Nintendo Switch</li>
+					<li>Liv Invite</li>
+					<li>Miquelrius Notebook</li>
+				</ul>
+			</div>
+		</div>
+		<div class="container">
+			<!-- start of comparisons div -->
+			<div class="comparison">
+				<!-- Left Compare -->
+				<div class="compare-left">
+					<h2>I want to buy...</h2>
+					<form>
+						<div class="form-group">
+							<input type="text" class="form-control" id="item" placeholder="name of item">
+						</div>
+						<div class="form-group">
+							<input type="number" class="form-control" id="item-cost" placeholder="cost of item">
+						</div>
+					</form>
+				</div>
+				<!-- Right Compare -->
+				<div class="compare-right">
+					<h2>Compare it to...</h2>
+					<form>
+						<select class="custom-select">
+							<option selected>Choose an item</option>
+							<option value="apple">apples - $.30</option>
+							<option value="coffee">cups of coffee - $2.26</option>
+							<option value="netflix">months of Netflix subscription - $15.99</option>
+						</select>
+					</form>
+				</div>
+			</div>
+			<!-- end of comparisons div -->
+			<div class="title">
+				<div class="results">
+					<div id="result-text">
+						<h3 id="user-input">The Nintendo Switch</h3>
+						<p>costs as much as</p>
+						<h3><span id="count">1000</span> <span id="comparison-item">apples</span></h3>
+					</div>
+					<button type="button" class="btn btn-info">Worth it</button>
+					<button type="button" class="btn btn-warning">Not</button>
+				</div>
+					<div id="result-visual">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="scripts/main.js"></script>
+</body>
+</html>

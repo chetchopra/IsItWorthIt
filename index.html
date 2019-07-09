@@ -17,18 +17,25 @@
 			<p class="lead"></p>
 		</div>
 	</div>
-	<div class="container">
-			<!-- Sliding Wishlist -->
-			<div id="user-wishlist" class="wishlist">
-				<!-- Exit out -->
-				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-				<!-- Populate Wishlist items here -->
+	<!-- Sliding Wishlist -->
+	<div>
+		<div class="wishlist">
+			<div class="container">
+				<p class="exit">&times;</p>
+				<p>Your Wish List</p>
+				<ul>
+					<li>Nintendo Switch</li>
+					<li>Liv Invite</li>
+					<li>Miquelrius Notebook</li>
+				</ul>
 			</div>
+		</div>
+		<div class="container">
 			<!-- start of comparisons div -->
 			<div class="comparison">
 				<!-- Left Compare -->
 				<div class="compare-left">
-					<h3>I want to buy...</h3>
+					<h2>I want to buy...</h2>
 					<form>
 						<div class="form-group">
 							<input type="text" class="form-control" id="item" placeholder="name of item">
@@ -40,7 +47,7 @@
 				</div>
 				<!-- Right Compare -->
 				<div class="compare-right">
-					<h3>Compare it to...</h3>
+					<h2>Compare it to...</h2>
 					<form>
 						<select class="custom-select">
 							<option selected>Choose an item</option>
@@ -54,15 +61,19 @@
 			<!-- end of comparisons div -->
 			<div class="title">
 				<div class="results">
-					<div class="result-text" style="display: none;">
-						<h4 id="user-input"><!-- User Input Item --></h4>
+					<div id="result-text">
+						<h3 id="user-input">The Nintendo Switch</h3>
 						<p>costs as much as</p>
-						<h4><span id="count"><!-- Calculated Number --></span> <span id="comparison-item"><!-- Comparison Item --></span></h4>
+						<h3><span id="count">1000</span> <span id="comparison-item">apples</span></h3>
 					</div>
-					<div class="result-visual">
+					<button type="button" class="btn btn-info">Worth it</button>
+					<button type="button" class="btn btn-warning">Not</button>
+				</div>
+					<div id="result-visual">
 					</div>
 				</div>
 			</div>
-    </div>
+		</div>
+	</div>
 </body>
 </html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<title>Is it Worth it?</title>
+</head>
+<body>
+    <div class="container">
+			<!-- Brand Navbar -->
+			<nav class="navbar navbar-light bg-light">
+					<span class="navbar-brand mb-0 h1">Is it Worth it?</span>
+			</nav>
+			<!-- Sliding Wishlist -->
+			<div id="user-wishlist" class="wishlist">
+				<!-- Exit out -->
+				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+				<!-- Populate Wishlist items here -->
+			</div>
+			<!-- start of comparisons div -->
+			<div class="comparison">
+				<!-- Left Compare -->
+				<div>
+					<h3>I want to buy...</h3>
+					<form>
+						<div class="form-group">
+							<input type="text" class="form-control" id="item" placeholder="name of item">
+						</div>
+						<div class="form-group">
+							<input type="number" class="form-control" id="item-cost" placeholder="cost of item">
+						</div>
+					</form>
+				</div>
+				<!-- Right Compare -->
+				<div>
+					<h3>Compare it to...</h3>
+						<form>
+							<select class="custom-select">
+								<option selected>Choose an item</option>
+								<option value="apple">apples - $.30</option>
+								<option value="coffee">cups of coffee - $2.26</option>
+								<option value="netflix">months of Netflix subscription - $15.99</option>
+							</select>
+						</form>
+				</div>
+			</div>
+			<!-- end of comparisons div -->
+			<div class="title">
+				<h1>Is it Worth it?</h1>
+				<div class="results">
+					<div class="result-text" style="display: none;">
+						<h4 id="user-input"><!-- User Input Item --></h4>
+						<p>costs as much as</p>
+						<h4><span id="count"><!-- Calculated Number --></span> <span id="comparison-item"><!-- Comparison Item --></span></h4>
+					</div>
+					<div class="result-visual">
+					</div>
+				</div>
+			</div>
+    </div>
+</body>
+</html>

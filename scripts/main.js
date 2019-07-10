@@ -5,7 +5,6 @@ const dropdown = document.querySelector("select");
 const leftCompare = document.querySelector(".compare-left form");
 const rightCompare = document.querySelector(".compare-right form");
 const resultHeader = document.querySelector("#result-header");
-const resultCount = document.querySelector("#result-count");
 const resultCompare = document.querySelector("#result-compare");
 
 
@@ -61,7 +60,6 @@ function populateItems() {
 
 // Fetch a single comparison item
 function fetchComparisonItem(cost, id) {
-    console.log(id);
     fetch(`${comparisonUrl}/${id}`)
     .then(resp => resp.json())
     .then(obj => displayItemCount(cost, obj))
@@ -69,8 +67,8 @@ function fetchComparisonItem(cost, id) {
 
 function displayItemCount(cost, compare_obj) {
     let num = Math.floor(cost / compare_obj.cost);
-    resultCount.textContent = num;
-    resultCompare.textContent = compare_obj.name;
+    let pluralized = pluralize(compare_obj.name, num, true);
+    resultCompare.textContent = pluralized;
 }
 // TODO: create function that performs cost/cost of comparisonItem math
 

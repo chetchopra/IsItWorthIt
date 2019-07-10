@@ -16,6 +16,7 @@ const signUpBtn = document.querySelector("#sign-up-btn");
 const loginBtn = document.querySelector("#login-btn");
 const newUserName = document.querySelector("#new-username");
 const userName = document.querySelector("#username");
+const loginModal = document.querySelector("#loginModal");
 
 
 function fetchWishlistItems() {
@@ -139,14 +140,30 @@ function addLoginEventListener() {
 function loginUser() {
     fetch(`${userUrl}/${username.value}`)
     .then(resp => resp.json())
-    .then(json => console.log(json))
+    .then(json => validateUser(json))
     .catch(err => err.message);
-    //save user to local storage
-    //load wishlist
-    //change login to logout
 }
 
-function 
+function validateUser(response) {
+    if (response) {
+        //change login to logout
+        //make worth/not btn available
+        //save user to local storage
+        //load wishlist
+        // debugger;
+        $("#loginModal").modal("hide");
+        saveUserToLocalStorage(response);
+        
+    } else {
+        console.log("Bad Login");
+    }
+}
+
+function saveUserToLocalStorage(user) {
+    localStorage.setItem("user_id", user.id);
+}
+
+
 
 function loadListeners() {
     addDropdownEventListener();

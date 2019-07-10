@@ -17,6 +17,11 @@ const loginBtn = document.querySelector("#login-btn");
 const newUserName = document.querySelector("#new-username");
 const userName = document.querySelector("#username");
 const loginModal = document.querySelector("#loginModal");
+const resultBtns = document.querySelector("#result-btns");
+const navLoginBtn = document.querySelector("#nav-login-btn");
+const navWishListBtn = document.querySelector("#wish-list-btn");
+const navLogoutBtn = document.querySelector("#logout-btn");
+
 
 
 function fetchWishlistItems() {
@@ -153,7 +158,7 @@ function validateUser(response) {
         // debugger;
         $("#loginModal").modal("hide");
         saveUserToLocalStorage(response);
-        
+        toggleBtns(response.id);
     } else {
         console.log("Bad Login");
     }
@@ -163,14 +168,47 @@ function saveUserToLocalStorage(user) {
     localStorage.setItem("user_id", user.id);
 }
 
+function checkLocalStorage() {
+    let userId = localStorage.getItem("user_id");
+    toggleBtns(userId);
+}
+
+
+function toggleBtns(userId) {
+    if (userId) {
+        console.log("logged in")
+        resultBtns.style.display = "block";
+        navWishListBtn.style.display = "block";
+        navLoginBtn.style.display = "none";
+        navLogoutBtn.style.display = "block"
+    } else {
+        console.log("Not logged in")
+        resultBtns.style.display = "none";
+        navWishListBtn.style.display = "none";
+        navLoginBtn.style.display = "block";
+        navLogoutBtn.style.display = "none"
+    }
+}
+
+function addLogoutEventListener() {
+    navLogoutBtn.addEventListener("click", logoutUser)
+}
+
+function logoutUser() {
+    localStorage.removeItem("user_id");
+    toggleBtns();
+}
+
 
 
 function loadListeners() {
     addDropdownEventListener();
     addSignUpEventListener();
     addLoginEventListener();
+    addLogoutEventListener();
 }
 
+checkLocalStorage();
 fetchWishlistItems();
 fetchComparisonItems();
 loadListeners();

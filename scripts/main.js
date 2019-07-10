@@ -4,9 +4,13 @@ const wishlist = document.querySelector(".wishlist ul");
 const dropdown = document.querySelector("select");
 const leftCompare = document.querySelector(".compare-left form");
 const rightCompare = document.querySelector(".compare-right form");
+const name = leftCompare.children[0].children[0];
+const cost = leftCompare.children[1].children[0];
 const resultHeader = document.querySelector("#result-header");
 const resultCompare = document.querySelector("#result-compare");
-
+const resultsDiv = document.querySelector(".results");
+const worthItBtn = document.querySelector("#worth-it");
+const notWorthItBtn = document.querySelector("#not-worth-it");
 
 function fetchWishlistItems() {
     fetch(wishlistUrl)
@@ -50,12 +54,41 @@ function addDropdownEventListener() {
 }
 
 function populateItems() {
-    let name = leftCompare.children[0].children[0].value;
-    let cost = leftCompare.children[1].children[0].value;
-    if (name && cost) {
-        resultHeader.textContent = `The ${name}`;
-        fetchComparisonItem(cost, dropdown.value);
+    if (name.value && cost.value) {
+        resultsDiv.style.display = "block";
+        resultHeader.textContent = `The ${name.value}`;
+        fetchComparisonItem(cost.value, dropdown.value);
+        worthItBtn.addEventListener("click", () => {
+            addWishItem();
+            clearResults();
+        })
+        notWorthItBtn.addEventListener("click", clearResults);
     }
+}
+
+function clearResults() {
+    console.log("clear!")
+    name.value = "";
+    cost.value = "";
+    resultsDiv.style.display = "none";
+}
+
+function addWishItem() {
+    fetch(wishlistUrl, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            name: name.value,
+            cost: cost.value,
+            user_id: 1
+        })
+    })
+    .then(resp => resp.json())
+    .then(obj => console.log(obj))
+    .catch(err => err.message)
 }
 
 // Fetch a single comparison item
@@ -69,11 +102,6 @@ function displayItemCount(cost, compare_obj) {
     let num = Math.floor(cost / compare_obj.cost);
     let pluralized = pluralize(compare_obj.name, num, true);
     resultCompare.textContent = pluralized;
-}
-// TODO: create function that performs cost/cost of comparisonItem math
-
-function displayCount(num) {
-    
 }
 
 function loadListeners() {

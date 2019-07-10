@@ -9,14 +9,77 @@
 	<title>Is it Worth it?</title>
 </head>
 <body>
-	<!-- Brand Navbar -->
 	<div class="jumbotron jumbotron-fluid">
 		<div class="container">
 			<h1 class="display-4">Is it Worth it?</h1>
 			<p class="lead"></p>
 		</div>
-
 	</div>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+		  <ul class="navbar-nav">
+			<li class="nav-item">
+			  <a class="nav-link" href="#">Wish List</a>
+			</li>
+			<li class="nav-item">
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+					Login
+				</button>
+			</li>
+		  </ul>
+		</div>
+	</nav>
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+			<form>
+				<div class="form-group">
+				  <input type="text" class="form-control" id="username" placeholder="Username">
+				</div>
+			</form>
+			<p>
+				or<br>
+				<a href="#" data-dismiss="modal" data-toggle="modal" data-target="#signupModal">Sign up here</a>
+			</p>
+			<button type="submit" class="btn btn-primary">Log in</button>
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+  <!-- Signup Modal -->
+  <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+					  <input type="text" class="form-control" id="username" placeholder="Create a username">
+					</div>
+				</form>
+				<button type="submit" class="btn btn-primary">Log in</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
 	<!-- Sliding Wishlist -->
 	<div>
 		<div class="wishlist">
@@ -52,19 +115,17 @@
 				</div>
 			</div>
 			<!-- end of comparisons div -->
-			<div>
-				<div class="results">
-					<div id="result-text">
-						<p>
-							<span id="result-header"></span><br>
-							costs as much as<br>
-							<span id="result-compare"></span>
-						</p>
-					</div>
-					<button type="button" class="btn btn-info">Worth it</button>
-					<button type="button" class="btn btn-warning">Not</button>
-					<div id="result-visual"></div>
+			<div class="results">
+				<div id="result-text">
+					<p>
+						<span id="result-header"></span><br>
+						costs as much as<br>
+						<span id="result-compare"></span>
+					</p>
 				</div>
+				<button type="button" class="btn btn-info" id="worth-it">Worth it</button>
+				<button type="button" class="btn btn-warning" id="not-worth-it">Not</button>
+				<div id="result-visual"></div>
 			</div>
 		</div>
 	</div>

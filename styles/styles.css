@@ -9,6 +9,7 @@ body {
     margin: 0px;
 }
 
+
 .comparison {
     padding-top: 5%;
     width: 100%;
@@ -35,7 +36,7 @@ body {
 }
 
 .results {
-    /* display: none; */
+    display: none;
 }
 
 /* Sliding Wish List */
@@ -47,8 +48,7 @@ body {
     width: 30%;
     height: 100%;
     z-index: 1;
-    left: -30%;     
-
+    left: -30%;
 }
 
 .wishlist .exit {

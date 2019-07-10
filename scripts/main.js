@@ -2,6 +2,12 @@ const wishlistUrl = "http://localhost:3000/items"
 const comparisonUrl = "http://localhost:3000/comparison_items"
 const wishlist = document.querySelector(".wishlist ul");
 const dropdown = document.querySelector("select");
+const leftCompare = document.querySelector(".compare-left form");
+const rightCompare = document.querySelector(".compare-right form");
+const resultHeader = document.querySelector("#result-header");
+const resultCount = document.querySelector("#result-count");
+const resultCompare = document.querySelector("#result-compare");
+
 
 function fetchWishlistItems() {
     fetch(wishlistUrl)
@@ -39,5 +45,32 @@ function displayComparisonItems(items) {
         dropdown.appendChild(option);
     })
 }
+
+function addDropdownEventListener() {
+    dropdown.addEventListener("change", populateItems);
+}
+
+function populateItems() {
+    let name = leftCompare.children[0].children[0].value;
+    let cost = leftCompare.children[1].children[0].value;
+    if (name && cost) {
+        resultHeader.textContent = `The ${name}`;
+        fetchComparisonItem(dropdown.value);
+    }
+}
+
+// Fetch a single comparison item
+function fetchComparisonItem(id) {
+    console.log(id);
+    fetch(`${comparisonUrl}/${id}`)
+    .then(resp => resp.json())
+    .then(obj => console.log(obj))
+}
+
+function loadListeners() {
+    addDropdownEventListener();
+}
+
 fetchWishlistItems();
 fetchComparisonItems();
+loadListeners();

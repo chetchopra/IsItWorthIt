@@ -64,16 +64,18 @@ function fetchComparisonItem(cost, id) {
     console.log(id);
     fetch(`${comparisonUrl}/${id}`)
     .then(resp => resp.json())
-    .then(obj => calculateItems(cost, obj))
+    .then(obj => displayItemCount(cost, obj))
 }
 
-function calculateItems(cost, compare_obj) {
-    displayCount(Math.floor(cost / compare_obj.cost));
+function displayItemCount(cost, compare_obj) {
+    let num = Math.floor(cost / compare_obj.cost);
+    resultCount.textContent = num;
+    resultCompare.textContent = compare_obj.name;
 }
 // TODO: create function that performs cost/cost of comparisonItem math
 
 function displayCount(num) {
-    resultCount.textContent = num;
+    
 }
 
 function loadListeners() {

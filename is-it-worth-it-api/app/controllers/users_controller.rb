@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
     # Runs get_user before the show and update method
-    before_action :get_user, only: [:show, :update]
+    before_action :get_user, only: [:update]
 
     def show
-        render json: @user.to_json(:include => :items)
+        user = User.find_by(name: params[:name])
+        render json: user.to_json(:include => :items)
     end
 
     def create 

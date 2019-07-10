@@ -1,5 +1,6 @@
 const wishlistUrl = "http://localhost:3000/items"
 const comparisonUrl = "http://localhost:3000/comparison_items"
+const userUrl = "http://localhost:3000/users";
 const wishlist = document.querySelector(".wishlist ul");
 const dropdown = document.querySelector("select");
 const leftCompare = document.querySelector(".compare-left form");
@@ -11,6 +12,11 @@ const resultCompare = document.querySelector("#result-compare");
 const resultsDiv = document.querySelector(".results");
 const worthItBtn = document.querySelector("#worth-it");
 const notWorthItBtn = document.querySelector("#not-worth-it");
+const signUpBtn = document.querySelector("#sign-up-btn");
+const loginBtn = document.querySelector("#login-btn");
+const newUserName = document.querySelector("#new-username");
+const userName = document.querySelector("#username");
+
 
 function fetchWishlistItems() {
     fetch(wishlistUrl)
@@ -104,8 +110,48 @@ function displayItemCount(cost, compare_obj) {
     resultCompare.textContent = pluralized;
 }
 
+function addSignUpEventListener() {
+    signUpBtn.addEventListener("click", createNewUser)
+}
+
+function createNewUser() {
+    configObj = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            name: newUserName.value
+        })
+    };
+ 
+    fetch(userUrl, configObj)
+    .then(resp => resp.json())
+    .then(json => console.log(json))
+    .catch(err => err.message);
+}
+
+function addLoginEventListener() {
+    loginBtn.addEventListener("click", loginUser);
+}
+
+function loginUser() {
+    fetch(`${userUrl}/${username.value}`)
+    .then(resp => resp.json())
+    .then(json => console.log(json))
+    .catch(err => err.message);
+    //save user to local storage
+    //load wishlist
+    //change login to logout
+}
+
+function 
+
 function loadListeners() {
     addDropdownEventListener();
+    addSignUpEventListener();
+    addLoginEventListener();
 }
 
 fetchWishlistItems();

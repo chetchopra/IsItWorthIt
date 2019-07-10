@@ -55,18 +55,26 @@ function populateItems() {
     let cost = leftCompare.children[1].children[0].value;
     if (name && cost) {
         resultHeader.textContent = `The ${name}`;
-        fetchComparisonItem(dropdown.value);
+        fetchComparisonItem(cost, dropdown.value);
     }
 }
 
 // Fetch a single comparison item
-function fetchComparisonItem(id) {
+function fetchComparisonItem(cost, id) {
     console.log(id);
     fetch(`${comparisonUrl}/${id}`)
     .then(resp => resp.json())
-    .then(obj => console.log(obj))
+    .then(obj => calculateItems(cost, obj))
+}
+
+function calculateItems(cost, compare_obj) {
+    displayCount(Math.floor(cost / compare_obj.cost));
 }
 // TODO: create function that performs cost/cost of comparisonItem math
+
+function displayCount(num) {
+    resultCount.textContent = num;
+}
 
 function loadListeners() {
     addDropdownEventListener();

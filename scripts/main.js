@@ -66,6 +66,7 @@ function fetchComparisonItem(id) {
     .then(resp => resp.json())
     .then(obj => console.log(obj))
 }
+// TODO: create function that performs cost/cost of comparisonItem math
 
 function loadListeners() {
     addDropdownEventListener();

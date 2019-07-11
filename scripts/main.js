@@ -24,6 +24,10 @@ const navLogoutBtn = document.querySelector("#logout-btn");
 const resultVisual = document.querySelector("#result-visual");
 const slideMenu = document.querySelector("#side-menu");
 const exitMenuBtn = document.querySelector("#exit-list-btn");
+// Read Item Modal
+const seeItemModal = document.querySelector("#seeItemModal");
+const wishItemNameCell = document.querySelector("#show-item-name");
+const wishItemCostCell = document.querySelector("#show-item-cost");
 
 // Todo: filter wishlist items
 function fetchWishlistItems() {
@@ -38,14 +42,21 @@ function displayWishlist(items) {
         wishlist.removeChild(wishlist.firstChild);
     }
     items.forEach(item => {
-        console.log(item)
         let li = document.createElement("li");
         let link = document.createElement("a");
         link.textContent = item.name;
         link.href = "#";
+        link.setAttribute("data-toggle", "modal");
+        link.setAttribute("data-target", "#seeItemModal")
+        link.addEventListener("click", () => seeItem(item))
         li.appendChild(link);
         wishlist.appendChild(li);
     })
+}
+
+function seeItem(item) {
+    wishItemNameCell.textContent = item.name;
+    wishItemCostCell.textContent = `$${item.cost.toFixed(2)}`;
 }
 
 function fetchComparisonItems() {

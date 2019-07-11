@@ -119,16 +119,22 @@ function addDropdownEventListener() {
     dropdown.addEventListener("change", populateItems);
 }
 
+function addWorthItBtnEventListener() {
+    worthItBtn.addEventListener("click", () => {
+        addWishItem();
+        clearResults();
+    })
+}
+
+function addNotWorthBtnEventListener() {
+    notWorthItBtn.addEventListener("click", clearResults);
+}
+
 function populateItems() {
     if (name.value && cost.value) {
         resultsDiv.style.display = "block";
         resultHeader.textContent = `The ${name.value}`;
         fetchComparisonItem(cost.value, dropdown.value);
-        worthItBtn.addEventListener("click", () => {
-            addWishItem();
-            clearResults();
-        })
-        notWorthItBtn.addEventListener("click", clearResults);
     }
 }
 
@@ -301,6 +307,8 @@ function loadListeners() {
     addLogoutEventListener();
     addSlideOpenEventListener();
     addSlideClosedEventListener();
+    addWorthItBtnEventListener()
+    addNotWorthBtnEventListener();
 }
 
 checkLocalStorage();

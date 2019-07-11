@@ -12,6 +12,7 @@ class ItemsController < ApplicationController
     end
 
     def create 
+        # byebug
         newItem = Item.create(get_item_params)
         # Renders json for the newly created item
         render json: newItem

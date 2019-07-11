@@ -33,6 +33,7 @@ const deleteBtn = document.querySelector("#delete-btn")
 // Edit Item Modal
 const editItemField = document.querySelector("#edit-item");
 const editCostField = document.querySelector("#edit-item-cost");
+const editConfirmBtn = document.querySelector("#edit-confirm-btn");
 
 function fetchWishlistItems() {
     let username = localStorage.getItem("user_name");
@@ -70,8 +71,8 @@ function clearWishlist() {
 function seeItem(item) {
     wishItemNameCell.textContent = item.name;
     wishItemCostCell.textContent = `$${item.cost.toFixed(2)}`;
-
     refreshDeleteBtnEventListener(item);
+    refreshEditBtnEventListener(item);
 }
 
 function refreshDeleteBtnEventListener(item) {
@@ -80,6 +81,14 @@ function refreshDeleteBtnEventListener(item) {
     deleteBtn.addEventListener("click", function() {
         deleteItem(item);
     })
+}
+
+function refreshEditBtnEventListener(item) {
+    editBtn.removeEventListener("click", addEditConfirmBtnEventListener);
+    editBtn.addEventListener("click", () => {
+        addEditConfirmBtnEventListener(item);
+        setEditFormValues(item);
+    });
 }
 
 function deleteItem(item) {
@@ -128,6 +137,40 @@ function addWorthItBtnEventListener() {
 
 function addNotWorthBtnEventListener() {
     notWorthItBtn.addEventListener("click", clearResults);
+}
+
+function addEditBtnEventListener() {
+    editBtn.addEventListener("click", setEditFormValues)
+}
+
+function addEditConfirmBtnEventListener(item) {
+    editConfirmBtn.addEventListener("click", () => {
+        updateItem(item);
+    });
+}
+
+function updateItem(item) {
+    configObj = { method: "PATCH",
+        headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            cost: editCostField.value,
+            name: editItemField.value
+        })
+    }
+    fetch(`${wishlistUrl}/${item.id}`, configObj)
+    .then(resp => resp.json())
+    .then(json => fetchWishlistItems())
+    .catch(err => err.message);
+}
+
+function setEditFormValues(item) {
+    // let itemCost = parseFloat(wishItemCostCell.textContent.slice(1));
+    // let itemName = wishItemNameCell.textContent;
+    editItemField.setAttribute("value", item.name);
+    editCostField.setAttribute("value", item.cost); 
 }
 
 function populateItems() {
@@ -306,6 +349,8 @@ function loadListeners() {
     addSlideClosedEventListener();
     addWorthItBtnEventListener()
     addNotWorthBtnEventListener();
+    // addEditBtnEventListener();
+    // addEditConfirmBtnEventListener();
 }
 
 checkLocalStorage();

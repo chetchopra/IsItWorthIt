@@ -86,6 +86,7 @@ function clearResults() {
 }
 
 function addWishItem() {
+    let userId = localStorage.getItem("user_id");
     fetch(wishlistUrl, {
         method: "POST",
         headers: {
@@ -95,7 +96,7 @@ function addWishItem() {
         body: JSON.stringify({
             name: name.value,
             cost: cost.value,
-            user_id: 1
+            user_id: userId
         })
     })
     .then(resp => resp.json())
@@ -150,6 +151,7 @@ function loginUser() {
 }
 
 function validateUser(response) {
+    // debugger;
     if (response) {
         //change login to logout
         //make worth/not btn available
@@ -160,7 +162,7 @@ function validateUser(response) {
         saveUserToLocalStorage(response);
         toggleBtns(response.id);
     } else {
-        console.log("Bad Login");
+        userName.value = "Invalid Login"
     }
 }
 
@@ -170,23 +172,27 @@ function saveUserToLocalStorage(user) {
 
 function checkLocalStorage() {
     let userId = localStorage.getItem("user_id");
-    toggleBtns(userId);
+    console.log(`User id: ${userId}`);
+    if (userId) {
+        toggleBtns(userId);
+    } else {
+        //insert msg = username does not exist
+    }
 }
 
 
 function toggleBtns(userId) {
-    if (userId) {
-        console.log("logged in")
-        resultBtns.style.display = "block";
-        navWishListBtn.style.display = "block";
-        navLoginBtn.style.display = "none";
-        navLogoutBtn.style.display = "block"
-    } else {
-        console.log("Not logged in")
-        resultBtns.style.display = "none";
-        navWishListBtn.style.display = "none";
-        navLoginBtn.style.display = "block";
-        navLogoutBtn.style.display = "none"
+    let btns = [resultBtns, navWishListBtn, navLogoutBtn];
+    
+    for (let btn of btns) {
+        console.log(`${btn} - ${btn.style.display}`)
+        if (userId) {
+            btn.style.display = "block";
+            navLoginBtn.style.display = "none";
+        } else {
+            btn.style.display = "none";
+            navLoginBtn.style.display = "block";
+        }
     }
 }
 

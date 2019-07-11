@@ -54,3 +54,17 @@ body {
 .wishlist .exit {
     text-align: right;
 }
+
+#result-btns, #logout-btn, #wish-list-btn {
+    display: none;
+}
+
+#nav-login-btn {
+    display: block;
+}
+
+
+
+
+
+

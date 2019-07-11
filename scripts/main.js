@@ -153,7 +153,10 @@ function addWishItem() {
         })
     })
     .then(resp => resp.json())
-    .then(obj => fetchWishlistItems())
+    .then(obj => {
+        console.log(obj);
+        fetchWishlistItems();
+    })
     .catch(err => err.message)
 }
 

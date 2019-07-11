@@ -1,7 +1,7 @@
 const wishlistUrl = "http://localhost:3000/items"
 const comparisonUrl = "http://localhost:3000/comparison_items"
 const userUrl = "http://localhost:3000/users";
-const wishlist = document.querySelector(".wishlist ul");
+const wishlist = document.querySelector(".wishlist-body ul");
 const dropdown = document.querySelector("select");
 const leftCompare = document.querySelector(".compare-left form");
 const rightCompare = document.querySelector(".compare-right form");
@@ -23,9 +23,9 @@ const navWishListBtn = document.querySelector("#wish-list-btn");
 const navLogoutBtn = document.querySelector("#logout-btn");
 const resultVisual = document.querySelector("#result-visual");
 const slideMenu = document.querySelector("#side-menu");
-const exitMenuBtn = document.querySelector("#exit-list");
+const exitMenuBtn = document.querySelector("#exit-list-btn");
 
-
+// Todo: filter wishlist items
 function fetchWishlistItems() {
     fetch(wishlistUrl)
     .then(resp => resp.json())
@@ -38,8 +38,12 @@ function displayWishlist(items) {
         wishlist.removeChild(wishlist.firstChild);
     }
     items.forEach(item => {
+        console.log(item)
         let li = document.createElement("li");
-        li.textContent = item.name;
+        let link = document.createElement("a");
+        link.textContent = item.name;
+        link.href = "#";
+        li.appendChild(link);
         wishlist.appendChild(li);
     })
 }
@@ -196,7 +200,6 @@ function checkLocalStorage() {
         //insert msg = username does not exist
     }
 }
-
 
 function toggleBtns(userId) {
     let btns = [resultBtns, navWishListBtn, navLogoutBtn];

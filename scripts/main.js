@@ -56,7 +56,7 @@ function displayWishlist(items) {
 
 function seeItem(item) {
     wishItemNameCell.textContent = item.name;
-    wishItemCostCell.textContent = `$${item.cost.toFixed(2)}`;
+    wishItemCostCell.textContent = `$${item.cost.toFigitxed(2)}`;
 }
 
 function fetchComparisonItems() {

@@ -21,6 +21,7 @@ const resultBtns = document.querySelector("#result-btns");
 const navLoginBtn = document.querySelector("#nav-login-btn");
 const navWishListBtn = document.querySelector("#wish-list-btn");
 const navLogoutBtn = document.querySelector("#logout-btn");
+const resultVisual = document.querySelector("#result-visual")
 
 
 
@@ -115,7 +116,22 @@ function displayItemCount(cost, compare_obj) {
     let num = Math.floor(cost / compare_obj.cost);
     let pluralized = pluralize(compare_obj.name, num, true);
     resultCompare.textContent = pluralized;
+    populateImages(num, compare_obj);
+
 }
+
+function populateImages(num, compare_obj) {
+    while(resultVisual.firstChild) {
+        resultVisual.removeChild(resultVisual.firstChild);
+    }
+    for (let i = 0; i < num; i++) {
+        let image = document.createElement("img");
+        image.src = compare_obj.img_url;
+        resultVisual.appendChild(image);
+    }
+
+
+} 
 
 function addSignUpEventListener() {
     signUpBtn.addEventListener("click", createNewUser)

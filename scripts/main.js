@@ -21,8 +21,9 @@ const resultBtns = document.querySelector("#result-btns");
 const navLoginBtn = document.querySelector("#nav-login-btn");
 const navWishListBtn = document.querySelector("#wish-list-btn");
 const navLogoutBtn = document.querySelector("#logout-btn");
-const resultVisual = document.querySelector("#result-visual")
-
+const resultVisual = document.querySelector("#result-visual");
+const slideMenu = document.querySelector("#side-menu");
+const exitMenuBtn = document.querySelector("#exit-list");
 
 
 function fetchWishlistItems() {
@@ -221,13 +222,29 @@ function logoutUser() {
     toggleBtns();
 }
 
+function addSlideOpenEventListener() {
+    navWishListBtn.addEventListener("click", openList)
+}
 
+function openList() {
+    slideMenu.style.width = "30%";
+}
+
+function addSlideClosedEventListener() {
+    exitMenuBtn.addEventListener("click", closeList)
+}
+
+function closeList() {
+    slideMenu.style.width = "0";
+}
 
 function loadListeners() {
     addDropdownEventListener();
     addSignUpEventListener();
     addLoginEventListener();
     addLogoutEventListener();
+    addSlideOpenEventListener();
+    addSlideClosedEventListener();
 }
 
 checkLocalStorage();

@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
     end
 
     def destroy
+        byebug
         @item.destroy
         render json: {"message": {"type": "success", "content": "The item was removed successfully!"}}
     end

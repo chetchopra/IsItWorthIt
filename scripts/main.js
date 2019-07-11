@@ -28,36 +28,72 @@ const exitMenuBtn = document.querySelector("#exit-list-btn");
 const seeItemModal = document.querySelector("#seeItemModal");
 const wishItemNameCell = document.querySelector("#show-item-name");
 const wishItemCostCell = document.querySelector("#show-item-cost");
+const editBtn = document.querySelector("#edit-btn");
+const deleteBtn = document.querySelector("#delete-btn")
+// Edit Item Modal
+const editItemField = document.querySelector("#edit-item");
+const editCostField = document.querySelector("#edit-item-cost");
 
 // Todo: filter wishlist items
 function fetchWishlistItems() {
-    fetch(wishlistUrl)
+    let username = localStorage.getItem("user_name");
+    fetch(`${userUrl}/${username}`)
     .then(resp => resp.json())
-    .then(json => displayWishlist(json))
+    .then(json => {
+        displayWishlist(json.items);
+    })
     .catch(err => err.message)
 }
 
 function displayWishlist(items) {
-    while (wishlist.firstChild) {
-        wishlist.removeChild(wishlist.firstChild);
-    }
+    clearWishlist();
     items.forEach(item => {
         let li = document.createElement("li");
         let link = document.createElement("a");
         link.textContent = item.name;
         link.href = "#";
         link.setAttribute("data-toggle", "modal");
-        link.setAttribute("data-target", "#seeItemModal")
-        link.addEventListener("click", () => seeItem(item))
+        link.setAttribute("data-target", "#seeItemModal");
+        link.setAttribute("id", item.id);
+        link.addEventListener("click", () => seeItem(item));
         li.appendChild(link);
         wishlist.appendChild(li);
     })
 }
 
+function clearWishlist() {
+    while (wishlist.firstChild) {
+        wishlist.removeChild(wishlist.firstChild);
+    }
+}
 function seeItem(item) {
     wishItemNameCell.textContent = item.name;
-    wishItemCostCell.textContent = `$${item.cost.toFigitxed(2)}`;
+    wishItemCostCell.textContent = `$${item.cost.toFixed(2)}`;
+
+    // delete button event listener
+    refreshDeleteBtnEventListener(item);
 }
+
+// Todo - placeholders in edit fields should contain item info
+// function displayEditForm () {
+//     editBtn.addEventListener("click", () => {
+//         editItemField.placeholder = 
+//     })
+// }
+
+// Todo - click delete, delete item record
+function refreshDeleteBtnEventListener(item) {
+    deleteBtn.removeEventListener("click", deleteItem);
+    deleteBtn.addEventListener("click", () => deleteItem(item));
+}
+
+function deleteItem(item) {
+    debugger;
+    fetch(`${wishlistUrl}/${item.id}`, {
+        method: "DELETE"
+    })
+}
+
 
 function fetchComparisonItems() {
     fetch(comparisonUrl)
@@ -96,7 +132,6 @@ function populateItems() {
 }
 
 function clearResults() {
-    console.log("clear!")
     name.value = "";
     cost.value = "";
     resultsDiv.style.display = "none";
@@ -117,7 +152,7 @@ function addWishItem() {
         })
     })
     .then(resp => resp.json())
-    .then(obj => console.log(obj))
+    .then(obj => fetchWishlistItems())
     .catch(err => err.message)
 }
 
@@ -192,6 +227,7 @@ function validateUser(response) {
         // debugger;
         $("#loginModal").modal("hide");
         saveUserToLocalStorage(response);
+        fetchWishlistItems();
         toggleBtns(response.id);
     } else {
         userName.value = "Invalid Login"
@@ -200,6 +236,7 @@ function validateUser(response) {
 
 function saveUserToLocalStorage(user) {
     localStorage.setItem("user_id", user.id);
+    localStorage.setItem("user_name", user.name);
 }
 
 function checkLocalStorage() {
@@ -207,6 +244,7 @@ function checkLocalStorage() {
     console.log(`User id: ${userId}`);
     if (userId) {
         toggleBtns(userId);
+        fetchWishlistItems();
     } else {
         //insert msg = username does not exist
     }
@@ -216,7 +254,6 @@ function toggleBtns(userId) {
     let btns = [resultBtns, navWishListBtn, navLogoutBtn];
     
     for (let btn of btns) {
-        console.log(`${btn} - ${btn.style.display}`)
         if (userId) {
             btn.style.display = "block";
             navLoginBtn.style.display = "none";
@@ -233,6 +270,7 @@ function addLogoutEventListener() {
 
 function logoutUser() {
     localStorage.removeItem("user_id");
+    clearWishlist();
     toggleBtns();
 }
 
@@ -262,6 +300,5 @@ function loadListeners() {
 }
 
 checkLocalStorage();
-fetchWishlistItems();
 fetchComparisonItems();
 loadListeners();

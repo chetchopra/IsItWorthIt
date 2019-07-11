@@ -34,7 +34,6 @@ const deleteBtn = document.querySelector("#delete-btn")
 const editItemField = document.querySelector("#edit-item");
 const editCostField = document.querySelector("#edit-item-cost");
 
-// Todo: filter wishlist items
 function fetchWishlistItems() {
     let username = localStorage.getItem("user_name");
     fetch(`${userUrl}/${username}`)
@@ -55,6 +54,7 @@ function displayWishlist(items) {
         link.setAttribute("data-toggle", "modal");
         link.setAttribute("data-target", "#seeItemModal");
         link.setAttribute("id", item.id);
+        // click on link --> see wish item info in modal
         link.addEventListener("click", () => seeItem(item));
         li.appendChild(link);
         wishlist.appendChild(li);
@@ -66,34 +66,35 @@ function clearWishlist() {
         wishlist.removeChild(wishlist.firstChild);
     }
 }
+
 function seeItem(item) {
     wishItemNameCell.textContent = item.name;
     wishItemCostCell.textContent = `$${item.cost.toFixed(2)}`;
 
-    // delete button event listener
     refreshDeleteBtnEventListener(item);
 }
 
-// Todo - placeholders in edit fields should contain item info
-// function displayEditForm () {
-//     editBtn.addEventListener("click", () => {
-//         editItemField.placeholder = 
-//     })
-// }
-
-// Todo - click delete, delete item record
 function refreshDeleteBtnEventListener(item) {
+    // DEBUG refresh doesn't remove event listener
     deleteBtn.removeEventListener("click", deleteItem);
-    deleteBtn.addEventListener("click", () => deleteItem(item));
-}
-
-function deleteItem(item) {
-    debugger;
-    fetch(`${wishlistUrl}/${item.id}`, {
-        method: "DELETE"
+    deleteBtn.addEventListener("click", function() {
+        deleteItem(item);
     })
 }
 
+function deleteItem(item) {
+    console.log(item.id)
+    fetch(`${wishlistUrl}/${item.id}`, {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        }
+    })
+    .then(resp => resp.json())
+    .then(json => fetchWishlistItems())
+    .catch(err => err.message)
+}
 
 function fetchComparisonItems() {
     fetch(comparisonUrl)

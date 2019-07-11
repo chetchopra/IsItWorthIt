@@ -149,6 +149,15 @@ function addEditConfirmBtnEventListener(item) {
     });
 }
 
+function addCostFieldEventListener() {
+    cost.addEventListener("keypress", (event) => {
+        var key = event.which || event.keyCode;
+        if (key == 13) {
+            populateItems();
+        }
+    });
+}
+
 function updateItem(item) {
     configObj = { method: "PATCH",
         headers: {
@@ -352,6 +361,7 @@ function loadListeners() {
     addSlideClosedEventListener();
     addWorthItBtnEventListener()
     addNotWorthBtnEventListener();
+    addCostFieldEventListener();
     // addEditBtnEventListener();
     // addEditConfirmBtnEventListener();
 }

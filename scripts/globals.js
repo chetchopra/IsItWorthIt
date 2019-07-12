@@ -18,6 +18,7 @@ const userName = document.querySelector("#username");
 const loginModal = document.querySelector("#loginModal");
 
 // Wishlist
+const usernameDisplay = document.querySelector("#user-display");
 const wishlist = document.querySelector(".wishlist-body ul");
 const slideMenu = document.querySelector("#side-menu");
 const exitMenuBtn = document.querySelector("#exit-list-btn");

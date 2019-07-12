@@ -25,7 +25,7 @@ function fetchWishlistItems() {
     fetch(`${userUrl}/${username}`)
     .then(resp => resp.json())
     .then(json => {
-        displayWishlist(json.items);
+        displayWishlist(json.items, username);
     })
     .catch(err => err.message);
 }
@@ -116,7 +116,12 @@ function clearWishlist() {
 }
 
 // Displays newly fetched wishlist items and creates links that open modals
-function displayWishlist(items) {
+function displayWishlist(items, username) {
+    if (username[username.length-1] !== "s") {
+        usernameDisplay.textContent = `${username}'s`;
+    } else {
+        usernameDisplay.textContent = `${username}'`;
+    }
     clearWishlist();
     items.forEach(item => {
         let li = document.createElement("li");
@@ -249,6 +254,7 @@ function loginUser() {
 // Logs a user out
 function logoutUser() {
     localStorage.removeItem("user_id");
+    closeList();
     clearWishlist();
     toggleBtns();
 }

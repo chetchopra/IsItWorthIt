@@ -15,4 +15,3 @@ cupcake = ComparisonItem.create(name: "cupcake", cost: 3.00, description: "yummy
 pencil = ComparisonItem.create(name: "pencil", cost: 0.10, description: "writing stick", img_url: "assets/pencil.svg")
 sake = ComparisonItem.create(name: "sake", cost: 1.00, description: "Japanese liquor", img_url: "assets/sake.svg")
 toilet_paper = ComparisonItem.create(name: "toilet paper", cost: 0.60, description: "butt wiper", img_url: "assets/toilet-paper.svg")
-

@@ -1,5 +1,11 @@
 /* Event Listeners */
 
+document.addEventListener("click", function (event) {
+  if (event.target.classList[0] !== "isWishList") {
+    closeList();
+  }
+})
+
 // Adds event listener to edit button
 function addEditBtnEventListener() {
   editBtn.addEventListener("click", updateItem);

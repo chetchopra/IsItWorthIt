@@ -145,7 +145,9 @@ function displayWishlist(items, username) {
     clearWishlist();
     items.forEach(item => {
         let li = document.createElement("li");
+        li.setAttribute("class", "isWishList");
         let link = document.createElement("a");
+        link.setAttribute("class", "isWishList");
         link.textContent = item.name;
         link.href = "#";
         link.setAttribute("data-toggle", "modal");

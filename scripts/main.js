@@ -71,29 +71,102 @@ function clearWishlist() {
 function seeItem(item) {
     wishItemNameCell.textContent = item.name;
     wishItemCostCell.textContent = `$${item.cost.toFixed(2)}`;
-    refreshDeleteBtnEventListener(item);
-    refreshEditBtnEventListener(item);
+    localStorage.removeItem("cur_item_id");
+    localStorage.removeItem("cur_item_name");
+    localStorage.removeItem("cur_item_cost");
+    localStorage.setItem("cur_item_id", item.id);
+    localStorage.setItem("cur_item_name", item.name);
+    localStorage.setItem("cur_item_cost", item.cost);
+    // refreshDeleteBtnEventListener(item);
+    // refreshEditBtnEventListener(item);
 }
 
-function refreshDeleteBtnEventListener(item) {
-    // DEBUG refresh doesn't remove event listener
-    deleteBtn.removeEventListener("click", deleteItem);
-    deleteBtn.addEventListener("click", function() {
-        deleteItem(item);
-    })
+function addEditBtnEventListener() {
+    editBtn.addEventListener("click", setEditModalValues);
 }
 
-function refreshEditBtnEventListener(item) {
-    editBtn.removeEventListener("click", addEditConfirmBtnEventListener);
-    editBtn.addEventListener("click", () => {
-        addEditConfirmBtnEventListener(item);
-        setEditFormValues(item);
+function addDeleteBtnEventListener() {
+    deleteBtn.addEventListener("click", deleteItem);
+}
+
+function addEditConfirmBtnEventListener() {
+    editConfirmBtn.addEventListener("click", function () {
+        updateItem();
     });
 }
 
+function setEditModalValues() {
+    
+    let itemName = localStorage.getItem("cur_item_name");
+    let itemCost = localStorage.getItem("cur_item_cost");
+    console.log(`Setting modal values ${itemName}  ${itemCost}`);
+    editItemField.setAttribute("value", itemName);
+    editCostField.setAttribute("value", itemCost);
+}
+
+
+
+
+// function refreshDeleteBtnEventListener(item) {
+//     // DEBUG refresh doesn't remove event listener
+//     // deleteBtn.removeEventListener("click", deleteItem);
+//     // deleteBtn.addEventListener("click", function() {
+//     //     deleteItem(item);
+//     // })
+
+//     deleteBtn.addEventListener("click", function _listener() {
+//         deleteItem(item);
+//         deleteBtn.removeEventListener("click", _listener, true)
+//     }, true);
+// }
+
+// function refreshEditBtnEventListener(item) {
+//     // editBtn.removeEventListener("click", addEditConfirmBtnEventListener);
+//     // editBtn.addEventListener("click", () => {
+//     //     addEditConfirmBtnEventListener(item);
+//     //     setEditFormValues(item);
+//     // });
+
+//     editBtn.addEventListener("click", function _listener() {
+//         addEditConfirmBtnEventListener(item);
+//         setEditFormValues(item);
+//         editBtn.removeEventListener("click", _listener, true);
+//     }, true)
+// }
+
+// function addEditConfirmBtnEventListener(item) {
+//     // editConfirmBtn.addEventListener("click", () => {
+//     //     updateItem(item);
+//     // });
+
+//     editConfirmBtn.addEventListener("click", function _listener() {
+//         updateItem(item);
+//         editConfirmBtn.removeEventListener("click", _listener, true)
+//     }, true);
+// }
+
+function updateItem(item) {
+    let itemId = localStorage.getItem("cur_item_id");
+    configObj = { method: "PATCH",
+        headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            cost: editCostField.value,
+            name: editItemField.value
+        })
+    }
+    fetch(`${wishlistUrl}/${itemId}`, configObj)
+    .then(resp => resp.json())
+    .then(json => fetchWishlistItems())
+    .catch(err => err.message);
+}
+
 function deleteItem(item) {
-    console.log(item.id)
-    fetch(`${wishlistUrl}/${item.id}`, {
+    let itemId = localStorage.getItem("cur_item_id");
+    // console.log(item.id)
+    fetch(`${wishlistUrl}/${itemId}`, {
         method: "DELETE",
         headers: {
             'Content-Type': 'application/json',
@@ -139,15 +212,11 @@ function addNotWorthBtnEventListener() {
     notWorthItBtn.addEventListener("click", clearResults);
 }
 
-function addEditBtnEventListener() {
-    editBtn.addEventListener("click", setEditFormValues)
-}
+// function addEditBtnEventListener() {
+//     editBtn.addEventListener("click", setEditFormValues)
+// }
 
-function addEditConfirmBtnEventListener(item) {
-    editConfirmBtn.addEventListener("click", () => {
-        updateItem(item);
-    });
-}
+
 
 function addCostFieldEventListener() {
     cost.addEventListener("keypress", (event) => {
@@ -158,22 +227,6 @@ function addCostFieldEventListener() {
     });
 }
 
-function updateItem(item) {
-    configObj = { method: "PATCH",
-        headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-        },
-        body: JSON.stringify({
-            cost: editCostField.value,
-            name: editItemField.value
-        })
-    }
-    fetch(`${wishlistUrl}/${item.id}`, configObj)
-    .then(resp => resp.json())
-    .then(json => fetchWishlistItems())
-    .catch(err => err.message);
-}
 
 function setEditFormValues(item) {
     // let itemCost = parseFloat(wishItemCostCell.textContent.slice(1));
@@ -362,8 +415,11 @@ function loadListeners() {
     addWorthItBtnEventListener()
     addNotWorthBtnEventListener();
     addCostFieldEventListener();
-    // addEditBtnEventListener();
-    // addEditConfirmBtnEventListener();
+
+    addEditBtnEventListener();
+    addDeleteBtnEventListener();
+    addEditConfirmBtnEventListener();
+
 }
 
 checkLocalStorage();

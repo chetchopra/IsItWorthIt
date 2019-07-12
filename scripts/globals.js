@@ -24,8 +24,8 @@ const exitMenuBtn = document.querySelector("#exit-list-btn");
 
 // Left panel - Item name/cost
 const leftCompare = document.querySelector(".compare-left form");
-const name = leftCompare.children[0].children[0];
-const cost = leftCompare.children[1].children[0];
+const name = leftCompare.children[0].children[1];
+const cost = leftCompare.children[1].children[1];
 
 // Right panel - Comparison items dropdown
 const dropdown = document.querySelector("select");

@@ -10,6 +10,11 @@ function addDeleteBtnEventListener() {
   deleteBtn.addEventListener("click", deleteItem);
 }
 
+// Adds event listener to edit user button
+function addEditUserEventListener() {
+  editUserBtn.addEventListener("click", updateUser);
+}
+
 // // Adds event listener to confirm edit button
 // function addEditConfirmBtnEventListener() {
 //   editConfirmBtn.addEventListener("click", function () {
@@ -83,6 +88,7 @@ function loadListeners() {
   addCostFieldEventListener();
   addEditBtnEventListener();
   addDeleteBtnEventListener();
+  addEditUserEventListener();
   // addEditConfirmBtnEventListener();
 }
 

@@ -43,6 +43,7 @@ const resultVisual = document.querySelector("#result-visual");
 
 // User modal elements
 const userCell = document.querySelector("#user-cell");
+const editUserBtn = document.querySelector("#edit-user-btn");
 
 // Read modal elements 
 const seeItemModal = document.querySelector("#seeItemModal");

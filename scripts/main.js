@@ -66,6 +66,11 @@ function addWishItem() {
     .catch(err => err.message);
 }
 
+// Updates the database with new user information
+function updateUser() {
+    
+}
+
 // Updates the database with the selected items with information 
 // Refetches wishlist items and re-renders wishlist
 function updateItem() {

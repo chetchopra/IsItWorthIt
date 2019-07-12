@@ -2,7 +2,7 @@
 
 // Adds event listener to edit button
 function addEditBtnEventListener() {
-  editBtn.addEventListener("click", setEditModalValues);
+  editBtn.addEventListener("click", updateItem);
 }
 
 // Adds event listener to delete button
@@ -10,12 +10,12 @@ function addDeleteBtnEventListener() {
   deleteBtn.addEventListener("click", deleteItem);
 }
 
-// Adds event listener to confirm edit button
-function addEditConfirmBtnEventListener() {
-  editConfirmBtn.addEventListener("click", function () {
-      updateItem();
-  });
-}
+// // Adds event listener to confirm edit button
+// function addEditConfirmBtnEventListener() {
+//   editConfirmBtn.addEventListener("click", function () {
+//       updateItem();
+//   });
+// }
 
 // Adds event listener to dropdown change
 function addDropdownEventListener() {
@@ -83,7 +83,7 @@ function loadListeners() {
   addCostFieldEventListener();
   addEditBtnEventListener();
   addDeleteBtnEventListener();
-  addEditConfirmBtnEventListener();
+  // addEditConfirmBtnEventListener();
 }
 
 /* Event Listeners */

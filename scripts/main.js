@@ -69,6 +69,7 @@ function addWishItem() {
 // Updates the database with the selected items with information 
 // Refetches wishlist items and re-renders wishlist
 function updateItem() {
+    console.log("Updating...")
     let itemId = localStorage.getItem("cur_item_id");
     configObj = { method: "PATCH",
         headers: {
@@ -76,8 +77,8 @@ function updateItem() {
         "Accept": "application/json"
         },
         body: JSON.stringify({
-            cost: editCostField.value,
-            name: editItemField.value
+            cost: wishItemCostCell.value,
+            name: wishItemNameCell.value
         })
     }
     fetch(`${wishlistUrl}/${itemId}`, configObj)
@@ -150,8 +151,8 @@ function closeList() {
 // Populates showItem modal with a name and cost. 
 // Then stores currently selected item in local storage
 function seeItem(item) {
-    wishItemNameCell.textContent = item.name;
-    wishItemCostCell.textContent = `$${item.cost.toFixed(2)}`;
+    wishItemNameCell.value = item.name;
+    wishItemCostCell.value = `${item.cost.toFixed(2)}`;
     setCurrentItemInLocalStorage(item);
 }
 
@@ -164,13 +165,13 @@ function setCurrentItemInLocalStorage(item) {
     localStorage.setItem("cur_item_cost", item.cost);
 }
 
-// Sets editItem modal values
-function setEditModalValues() {
-    let itemName = localStorage.getItem("cur_item_name");
-    let itemCost = localStorage.getItem("cur_item_cost");
-    editItemField.setAttribute("value", itemName);
-    editCostField.setAttribute("value", itemCost);
-}
+// // Sets editItem modal values
+// function setEditModalValues() {
+//     let itemName = localStorage.getItem("cur_item_name");
+//     let itemCost = localStorage.getItem("cur_item_cost");
+//     editItemField.setAttribute("value", itemName);
+//     editCostField.setAttribute("value", itemCost);
+// }
 
 /* Item access */
 

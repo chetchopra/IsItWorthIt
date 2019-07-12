@@ -134,7 +134,7 @@ function displayWishlist(items) {
 
 // Opens wish list
 function openList() {
-    slideMenu.style.width = "30%";
+    slideMenu.style.width = "350px";
 }
 
 // Closes wishlist

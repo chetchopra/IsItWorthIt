@@ -5,8 +5,8 @@ const wishlist = document.querySelector(".wishlist-body ul");
 const dropdown = document.querySelector("select");
 const leftCompare = document.querySelector(".compare-left form");
 const rightCompare = document.querySelector(".compare-right form");
-const name = leftCompare.children[0].children[0];
-const cost = leftCompare.children[1].children[0];
+const name = leftCompare.children[0].children[1];
+const cost = leftCompare.children[1].children[1];
 const resultHeader = document.querySelector("#result-header");
 const resultCompare = document.querySelector("#result-compare");
 const resultsDiv = document.querySelector(".results");
@@ -394,7 +394,7 @@ function addSlideOpenEventListener() {
 }
 
 function openList() {
-    slideMenu.style.width = "30%";
+    slideMenu.style.width = "350px";
 }
 
 function addSlideClosedEventListener() {

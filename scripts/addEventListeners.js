@@ -2,7 +2,6 @@
 
 // Adds event listener to edit button
 function addEditBtnEventListener() {
-  console.log("I happen")
   editBtn.addEventListener("click", setEditModalValues);
 }
 

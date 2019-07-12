@@ -150,8 +150,8 @@ function closeList() {
 // Populates showItem modal with a name and cost. 
 // Then stores currently selected item in local storage
 function seeItem(item) {
-    wishItemNameCell.value = item.name;
-    wishItemCostCell.value = `${item.cost.toFixed(2)}`;
+    wishItemNameCell.textContent = item.name;
+    wishItemCostCell.textContent = `$${item.cost.toFixed(2)}`;
     setCurrentItemInLocalStorage(item);
 }
 

@@ -22,8 +22,9 @@ rails s
 Finally, open the index.html file to begin using the application
 
 # Built Using
+- Rails 5.2.3
+- Javascript v12.4.0
 - Pluralize - https://github.com/blakeembrey/pluralize÷
-
 - Flaticon - 
 Icons made by [Smashicons](https://www.flaticon.com/authors/smashicons) from [www.flaticon.com](https://www.flaticon.com/) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
 Icons made by [Freepik](https://www.freepik.com/) from [www.flaticon.com](https://www.flaticon.com/) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)

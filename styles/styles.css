@@ -20,6 +20,7 @@ h1 {
 .navbar {
     background-color: #904f9d;
 }
+
 .navbar-nav li {
     font-size: 1.3em;
 }
@@ -27,6 +28,11 @@ h1 {
 #nav-login-btn {
     display: block;
 }
+
+#result-btns, #logout-btn, #wish-list-btn, #user-btn {
+    display: none;
+}
+
 
 a:hover {
     text-decoration: none;
@@ -124,10 +130,6 @@ a:hover {
     padding-right: 5%;
     padding-top: 1%;
     width: 350px;
-}
-
-#result-btns, #logout-btn, #wish-list-btn {
-    display: none;
 }
 
 

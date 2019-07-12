@@ -6,6 +6,7 @@ const comparisonUrl = "http://localhost:3000/comparison_items";
 const userUrl = "http://localhost:3000/users";
 
 // Nav bar elements
+const userBtn = document.querySelector("#user-link");
 const navLoginBtn = document.querySelector("#nav-login-btn");
 const navWishListBtn = document.querySelector("#wish-list-btn");
 const navLogoutBtn = document.querySelector("#logout-btn");
@@ -39,6 +40,9 @@ const resultBtns = document.querySelector("#result-btns");
 const worthItBtn = document.querySelector("#worth-it");
 const notWorthItBtn = document.querySelector("#not-worth-it");
 const resultVisual = document.querySelector("#result-visual");
+
+// User modal elements
+const userCell = document.querySelector("#user-cell");
 
 // Read modal elements 
 const seeItemModal = document.querySelector("#seeItemModal");

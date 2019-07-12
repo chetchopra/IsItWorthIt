@@ -264,6 +264,7 @@ function validateUser(response) {
     if (response) {
         $("#loginModal").modal("hide");
         saveUserToLocalStorage(response);
+        customizeUserPage(response.name);
         fetchWishlistItems();
         toggleBtns(response.id);
     } else {
@@ -280,15 +281,23 @@ function saveUserToLocalStorage(user) {
 // Checks local storage to see if a user is logged in
 function checkLocalStorage() {
     let userId = localStorage.getItem("user_id");
+    let userName = localStorage.getItem("user_name");
     if (userId) {
+        customizeUserPage(userName);
         toggleBtns(userId);
         fetchWishlistItems();
     }
 }
 
+// Customizes user link to match user name
+function customizeUserPage(name) {
+    userBtn.textContent = `${name}`;
+    userCell.textContent = `${name}`;
+}
+
 // Toggles button access based on login status
 function toggleBtns(userId) {
-    let btns = [resultBtns, navWishListBtn, navLogoutBtn];
+    let btns = [resultBtns, navWishListBtn, navLogoutBtn, userBtn];
     for (let btn of btns) {
         if (userId) {
             btn.style.display = "block";

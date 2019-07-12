@@ -51,4 +51,5 @@ const editItemField = document.querySelector("#edit-item");
 const editCostField = document.querySelector("#edit-item-cost");
 const editConfirmBtn = document.querySelector("#edit-confirm-btn");
 
+
 /* Globals */

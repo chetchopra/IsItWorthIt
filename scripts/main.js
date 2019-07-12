@@ -67,8 +67,23 @@ function addWishItem() {
 }
 
 // Updates the database with new user information
+// DEBUG
 function updateUser() {
-    
+    let userId = localStorage.getItem("user_id");
+    let configObj = {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        }, 
+        body: JSON.stringify({
+            email: editEmailInput.value
+        })
+    }
+    fetch(`${userUrl}/${userId}`, configObj)
+    .then(resp => resp.json())
+    .then(obj => console.log(obj))
+    .catch(err => err.message)
 }
 
 // Updates the database with the selected items with information 

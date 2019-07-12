@@ -43,7 +43,9 @@ const resultVisual = document.querySelector("#result-visual");
 
 // User modal elements
 const userCell = document.querySelector("#user-cell");
+const editEmailInput = document.querySelector("#edit-email");
 const editUserBtn = document.querySelector("#edit-user-btn");
+
 
 // Read modal elements 
 const seeItemModal = document.querySelector("#seeItemModal");

@@ -67,7 +67,6 @@ function addWishItem() {
 }
 
 // Updates the database with new user information
-// DEBUG
 function updateUser() {
     let userId = localStorage.getItem("user_id");
     let configObj = {
@@ -191,14 +190,6 @@ function setCurrentItemInLocalStorage(item) {
     localStorage.setItem("cur_item_name", item.name);
     localStorage.setItem("cur_item_cost", item.cost);
 }
-
-// // Sets editItem modal values
-// function setEditModalValues() {
-//     let itemName = localStorage.getItem("cur_item_name");
-//     let itemCost = localStorage.getItem("cur_item_cost");
-//     editItemField.setAttribute("value", itemName);
-//     editCostField.setAttribute("value", itemCost);
-// }
 
 /* Item access */
 

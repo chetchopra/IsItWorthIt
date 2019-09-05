@@ -1,2 +1,0 @@
-class ComparisonItem < ApplicationRecord
-end

@@ -1,9 +1,9 @@
 /* Globals */
 
 // API endpoints
-const wishlistUrl = "http://localhost:3000/items";
-const comparisonUrl = "http://localhost:3000/comparison_items";
-const userUrl = "http://localhost:3000/users";
+const wishlistUrl = "https://aqueous-taiga-57744.herokuapp.com/items";
+const comparisonUrl = "https://aqueous-taiga-57744.herokuapp.com/comparison_items";
+const userUrl = "https://aqueous-taiga-57744.herokuapp.com/users";
 
 // Nav bar elements
 const userBtn = document.querySelector("#user-link");
@@ -58,6 +58,5 @@ const deleteBtn = document.querySelector("#delete-btn");
 const editItemField = document.querySelector("#edit-item");
 const editCostField = document.querySelector("#edit-item-cost");
 const editConfirmBtn = document.querySelector("#edit-confirm-btn");
-
 
 /* Globals */

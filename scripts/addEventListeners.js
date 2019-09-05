@@ -21,13 +21,6 @@ function addEditUserEventListener() {
   editUserBtn.addEventListener("click", updateUser);
 }
 
-// // Adds event listener to confirm edit button
-// function addEditConfirmBtnEventListener() {
-//   editConfirmBtn.addEventListener("click", function () {
-//       updateItem();
-//   });
-// }
-
 // Adds event listener to dropdown change
 function addDropdownEventListener() {
   dropdown.addEventListener("change", populateItems);
@@ -95,7 +88,6 @@ function loadListeners() {
   addEditBtnEventListener();
   addDeleteBtnEventListener();
   addEditUserEventListener();
-  // addEditConfirmBtnEventListener();
 }
 
 /* Event Listeners */

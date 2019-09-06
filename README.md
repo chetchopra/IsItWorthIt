@@ -17,12 +17,14 @@ Finally, open the index.html file to begin using the application
 # Using the app
 
 1. Signup 
+
 ![](https://github.com/chetchopra/IsItWorthIt/blob/master/readmegifs/IsItWorthIt-Signup.gif)
 
 2. Compare 
+
 ![](https://github.com/chetchopra/IsItWorthIt/blob/master/readmegifs/IsItWorthIt-Compare.gif)
 
-3. Decide if its worth it or not. If it is it'll be added to your wishlist
+3. Decide if its worth it or not. If it is, it'll be added to your wishlist
 
 # Built Using
 - Rails 5.2.3

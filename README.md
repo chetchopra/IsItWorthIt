@@ -19,14 +19,14 @@ Finally, open the index.html file to begin using the application
 1. Signup 
 
 <p align="center">
-  <img width="660" height="500" src="https://github.com/chetchopra/IsItWorthIt/blob/master/readmegifs/IsItWorthIt-Signup.gif">
+  <img src="https://github.com/chetchopra/IsItWorthIt/blob/master/readmegifs/IsItWorthIt-Signup.gif">
 </p>
 
 
 2. Compare
 
 <p align="center">
-  <img width="660" height="500" src="https://github.com/chetchopra/IsItWorthIt/blob/master/readmegifs/IsItWorthIt-Compare.gif">
+  <img src="https://github.com/chetchopra/IsItWorthIt/blob/master/readmegifs/IsItWorthIt-Compare.gif">
 </p>
 
 

@@ -10,24 +10,17 @@ In the new directory, you will need to install dependencies included in the Gemf
 ```
 bundle install
 ```
-From within the `is-it-worth-it-api` directory, migrate and seed your database 
-```
-rails db:migrate
-rails db:seed
-```
-then run a local server
-```
-rails s
-```
+This front end is connected to a rails backend that is hosted on heroku. If you would like to customize the backend then you can grab it from https://github.com/chetchopra/IsItWorthIt-BackEnd.
+
 Finally, open the index.html file to begin using the application
 
 # Using the app
 
 1. Signup 
-![]
+![](https://github.com/chetchopra/IsItWorthIt/blob/master/readmegifs/IsItWorthIt-Signup.gif)
 
 2. Compare 
-![]
+![](https://github.com/chetchopra/IsItWorthIt/blob/master/readmegifs/IsItWorthIt-Compare.gif)
 
 3. Decide if its worth it or not. If it is it'll be added to your wishlist
 

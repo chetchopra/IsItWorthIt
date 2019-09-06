@@ -1,10 +1,6 @@
 /* All fetches */
 
 
-
-import '../node_modules/pluralize/pluralize'
-
-
 // Creates a new user in the database
 function createNewUser() {
     configObj = {

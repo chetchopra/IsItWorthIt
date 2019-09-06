@@ -1,5 +1,6 @@
 /* All fetches */
 
+
 // Creates a new user in the database
 function createNewUser() {
     configObj = {
@@ -15,7 +16,7 @@ function createNewUser() {
  
     fetch(userUrl, configObj)
     .then(resp => resp.json())
-    .then(json => console.log(json))
+    .then(json => json)
     .catch(err => err.message);
 }
 

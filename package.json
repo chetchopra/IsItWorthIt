@@ -1,0 +1,24 @@
+{
+  "name": "isitworthit",
+  "version": "1.0.0",
+  "description": "**Is it Worth it** is a single page web application that allows users to visualize the value of an item they wish to purchase in the form of other items.",
+  "main": "index.js",
+  "dependencies": {
+    "gh-pages": "^2.1.1",
+    "pluralize": "^8.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "deploy": "gh-pages -d /"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chetchopra/IsItWorthIt.git"
+  },
+  "author": "Chet Chopra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chetchopra/IsItWorthIt/issues"
+  },
+  "homepage": "https://chetchopra.github.io/IsItWorthIt/"
+}

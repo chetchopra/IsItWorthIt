@@ -1,9 +1,9 @@
 /* Globals */
 
 // API endpoints
-const wishlistUrl = "https://aqueous-taiga-57744.herokuapp.com/items";
-const comparisonUrl = "https://aqueous-taiga-57744.herokuapp.com/comparison_items";
-const userUrl = "https://aqueous-taiga-57744.herokuapp.com/users";
+const wishlistUrl = "https://isitworthitapi.herokuapp.com/items";
+const comparisonUrl = "https://isitworthitapi.herokuapp.com/comparison_items";
+const userUrl = "https://isitworthitapi.herokuapp.com/users";
 
 // Nav bar elements
 const userBtn = document.querySelector("#user-link");

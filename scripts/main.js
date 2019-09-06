@@ -1,5 +1,7 @@
 /* All fetches */
 
+var pluralize = require('pluralize')
+
 
 // Creates a new user in the database
 function createNewUser() {

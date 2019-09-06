@@ -1,6 +1,8 @@
 /* All fetches */
 
-var pluralize = require('pluralize')
+
+
+var pluralize = import('pluralize')
 
 
 // Creates a new user in the database

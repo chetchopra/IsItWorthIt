@@ -1,6 +1,8 @@
 /* All fetches */
 
 
+
+
 // Creates a new user in the database
 function createNewUser() {
     configObj = {
@@ -107,7 +109,7 @@ function updateItem() {
     .catch(err => err.message);
 }
 
-// Deletes selected item from the database
+// Deletes selected item from the databaserequire in jas
 // Refetches wishlist items and re-renders wishlist
 function deleteItem() {
     let itemId = localStorage.getItem("cur_item_id");

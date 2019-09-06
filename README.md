@@ -18,11 +18,17 @@ Finally, open the index.html file to begin using the application
 
 1. Signup 
 
-![](https://github.com/chetchopra/IsItWorthIt/blob/master/readmegifs/IsItWorthIt-Signup.gif)
+<p align="center">
+  <img width="660" height="500" src="https://github.com/chetchopra/IsItWorthIt/blob/master/readmegifs/IsItWorthIt-Signup.gif">
+</p>
 
-2. Compare 
 
-![](https://github.com/chetchopra/IsItWorthIt/blob/master/readmegifs/IsItWorthIt-Compare.gif)
+2. Compare
+
+<p align="center">
+  <img width="660" height="500" src="https://github.com/chetchopra/IsItWorthIt/blob/master/readmegifs/IsItWorthIt-Compare.gif">
+</p>
+
 
 3. Decide if its worth it or not. If it is, it'll be added to your wishlist
 

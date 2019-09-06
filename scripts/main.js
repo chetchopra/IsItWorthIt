@@ -2,7 +2,7 @@
 
 
 
-import pluralize from '../node_modules/pluralize'
+import {pluralize} from '../node_modules/pluralize';
 
 
 // Creates a new user in the database

@@ -4,6 +4,9 @@
 
 Users who sign up can access an additional feature where they can save items that they think are worth purchasing to a personal wishlist. They may also edit and delete items from their wishlist.
 
+# Demo
+Please visit https://chetchopra.github.io/IsItWorthIt/
+
 # Getting Started
 Download or clone this repository.
 In the new directory, you will need to install dependencies included in the Gemfile. 

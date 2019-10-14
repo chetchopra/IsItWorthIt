@@ -33,7 +33,7 @@ Finally, open the index.html file to begin using the application
 </p>
 
 
-3. Decide if its worth it or not. If it is, it'll be added to your wishlist
+3. Decide if its worth it or not. If it is it will be added to your wishlist
 
 # Built Using
 - Rails 5.2.3

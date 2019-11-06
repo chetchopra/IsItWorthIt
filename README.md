@@ -2,7 +2,7 @@
 
 **Is it Worth it** is a single page web application that allows users to visualize the value of an item they wish to purchase in the form of other items.
 
-Users who sign up can access an additional feature where they can save items that they think are worth purchasing to a personal wishlist. They may also edit and delete items from their wishlist.
+Users who sign up can access an additional feature where they can save items that they think are worth purchasing to a personal wishlist. They can also edit and delete items from their wishlist.
 
 # Demo
 Please visit https://chetchopra.github.io/IsItWorthIt/

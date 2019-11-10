@@ -26,7 +26,7 @@ Finally, open the index.html file to begin using the application
 </p>
 
 
-2. Compare
+2. Compare 
 
 <p align="center">
   <img src="https://github.com/chetchopra/IsItWorthIt/blob/master/readmegifs/IsItWorthIt-Compare.gif">
